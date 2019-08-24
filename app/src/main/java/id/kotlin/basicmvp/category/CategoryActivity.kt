@@ -8,12 +8,19 @@ import kotlinx.android.synthetic.main.activity_category.*
 
 class CategoryActivity : AppCompatActivity(), CategoryView {
 
+  private lateinit var presenter: CategoryPresenter
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_category)
 
-    val presenter = CategoryPresenter(this)
+    presenter = CategoryPresenter(this)
     presenter.getCategory()
+  }
+
+  override fun onDestroy() {
+    super.onDestroy()
+    presenter.onDestroy()
   }
 
   override fun showCategory(model: CategoryModel) {

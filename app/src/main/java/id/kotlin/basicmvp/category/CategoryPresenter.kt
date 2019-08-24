@@ -8,6 +8,8 @@ import io.reactivex.rxkotlin.addTo
 
 class CategoryPresenter(private val view: CategoryView) {
 
+  private val disposable = CompositeDisposable()
+
   fun getCategory() {
     view.showLoading()
 
@@ -23,6 +25,10 @@ class CategoryPresenter(private val view: CategoryView) {
             { error ->
               Log.e(CategoryPresenter::class.java.simpleName, "${error.printStackTrace()}")
               view.hideLoading()
-            }).addTo(CompositeDisposable())
+            }).addTo(disposable)
+  }
+
+  fun onDestroy() {
+    disposable.clear()
   }
 }
