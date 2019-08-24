@@ -9,6 +9,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 
 object NetworkProvider {
 
@@ -17,6 +18,7 @@ object NetworkProvider {
         client(providesHttpClient())
         baseUrl(BuildConfig.URL)
         addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
+        addCallAdapterFactory(RxJava2CallAdapterFactory.createAsync())
       }.build()
 
   private fun providesHttpClient(): OkHttpClient =
