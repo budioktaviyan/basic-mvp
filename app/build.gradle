@@ -13,6 +13,7 @@ android {
     versionCode 1
     versionName "1.0.0"
     buildConfigField 'String', 'URL', '"https://the-cocktail-db.p.rapidapi.com"'
+    buildConfigField 'String', 'KEY', '"65cc202591msh347c67fb6614d13p1774d5jsn76eb9a15458f"'
   }
   buildTypes {
     release {

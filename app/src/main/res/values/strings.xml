@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_name">Basic MVP</string>
+  <string name="category">Category</string>
+  <string name="glass">Glass</string>
+  <string name="ingredient">Ingredient</string>
 </resources>

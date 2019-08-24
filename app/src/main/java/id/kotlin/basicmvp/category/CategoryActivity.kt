@@ -24,7 +24,7 @@ class CategoryActivity : AppCompatActivity(), CategoryView {
   }
 
   override fun showCategory(model: CategoryModel) {
-    rv_category.adapter = CategoryAdapter(model.categories)
+    rv_category.adapter = CategoryAdapter(model)
   }
 
   override fun showLoading() {

@@ -17,8 +17,8 @@ object NetworkProvider {
       Retrofit.Builder().apply {
         client(providesHttpClient())
         baseUrl(BuildConfig.URL)
-        addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
         addCallAdapterFactory(RxJava2CallAdapterFactory.createAsync())
+        addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
       }.build()
 
   private fun providesHttpClient(): OkHttpClient =
@@ -33,7 +33,7 @@ object NetworkProvider {
         chain.proceed(
             chain.request().newBuilder().addHeader(
                 "x-rapidapi-key",
-                "65cc202591msh347c67fb6614d13p1774d5jsn76eb9a15458f"
+                BuildConfig.KEY
             ).build()
         )
       }
