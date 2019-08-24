@@ -3,6 +3,8 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="id.kotlin.basicmvp">
 
+  <uses-permission android:name="android.permission.INTERNET" />
+
   <application
       android:allowBackup="false"
       android:fullBackupContent="false"
@@ -14,7 +16,7 @@
       tools:ignore="GoogleAppIndexingWarning">
 
     <activity
-        android:name=".home.HomeActivity"
+        android:name=".category.CategoryActivity"
         android:screenOrientation="portrait">
 
       <intent-filter>
@@ -22,6 +24,9 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+    <activity
+        android:name=".home.HomeActivity"
+        android:screenOrientation="portrait" />
     <activity
         android:name=".detail.DetailActivity"
         android:screenOrientation="portrait" />
