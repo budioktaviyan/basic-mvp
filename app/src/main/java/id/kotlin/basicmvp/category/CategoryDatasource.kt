@@ -1,5 +1,6 @@
 package id.kotlin.basicmvp.category
 
+import id.kotlin.basicmvp.category.response.AlcoholicResponse
 import id.kotlin.basicmvp.category.response.CategoryResponse
 import id.kotlin.basicmvp.category.response.GlassResponse
 import id.kotlin.basicmvp.category.response.IngredientResponse
@@ -16,11 +17,16 @@ interface CategoryDatasource {
 
   @GET("/list.php")
   fun getGlass(
-      @Query("g") category: String = "list"
+      @Query("g") glass: String = "list"
   ): Single<GlassResponse>
 
   @GET("/list.php")
   fun getIngredient(
-      @Query("i") category: String = "list"
+      @Query("i") ingredient: String = "list"
   ): Single<IngredientResponse>
+
+  @GET("/list.php")
+  fun getAlcoholic(
+      @Query("a") alcoholic: String = "list"
+  ): Single<AlcoholicResponse>
 }

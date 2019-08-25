@@ -1,6 +1,7 @@
 package id.kotlin.basicmvp.category
 
 import android.util.Log
+import id.kotlin.basicmvp.category.response.AlcoholicResponse
 import id.kotlin.basicmvp.category.response.CategoryResponse
 import id.kotlin.basicmvp.category.response.GlassResponse
 import id.kotlin.basicmvp.category.response.IngredientResponse
@@ -21,12 +22,14 @@ class CategoryPresenter(private val view: CategoryView) {
     val category = CategoryItemModel(emptyList())
     val glass = GlassItemModel(emptyList())
     val ingredient = IngredientItemModel(emptyList())
-    val model = CategoryModel(category, glass, ingredient)
+    val alcoholic = AlcoholicItemModel(emptyList())
+    val model = CategoryModel(category, glass, ingredient, alcoholic)
 
     Single.merge(
         datasource.getCategory().observeOn(AndroidSchedulers.mainThread()),
         datasource.getGlass().observeOn(AndroidSchedulers.mainThread()),
-        datasource.getIngredient().observeOn(AndroidSchedulers.mainThread())
+        datasource.getIngredient().observeOn(AndroidSchedulers.mainThread()),
+        datasource.getAlcoholic().observeOn(AndroidSchedulers.mainThread())
     ).subscribe(
         { response ->
           when (response) {
@@ -43,6 +46,11 @@ class CategoryPresenter(private val view: CategoryView) {
             is IngredientResponse -> {
               ingredient.contents = response.drinks.map { it.strIngredient1 }
               model.ingredient = ingredient
+            }
+
+            is AlcoholicResponse -> {
+              alcoholic.contents = response.drinks.map { it.strAlcoholic ?: "Unknown" }
+              model.alcoholic = alcoholic
             }
           }
 
